@@ -140,6 +140,7 @@ export async function refreshToken(req, res) {
 
 export async function logout(req, res) {
   const oldToken = req.cookies.refreshToken;
+  console.log(oldToken)
 
   if (!oldToken) {
     return res.status(400).json({ message: "No token found" });
