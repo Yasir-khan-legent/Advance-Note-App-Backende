@@ -11,7 +11,7 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin:'https://yasir-khan-legent.github.io/Advance-Note-App-Frontend/',
+    origin:'https://yasir-khan-legent.github.io/Advance-Note-App-Frontend',
     credentials:true,
 }))
 Conection()
