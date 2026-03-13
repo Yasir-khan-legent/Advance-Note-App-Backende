@@ -10,8 +10,20 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 app.use(cookieParser())
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://yasir-khan-legent.github.io"
+];
 app.use(cors({
-origin:'http://localhost:5173',
+ origin: function(origin, callback){
+    // allow requests with no origin (like mobile apps or curl)
+    if(!origin) return callback(null, true);
+
+    if(allowedOrigins.indexOf(origin) === -1){
+      return callback(new Error('Not allowed by CORS'), false);
+    }
+    return callback(null, true);
+  },
     // origin:'https://yasir-khan-legent.github.io/Advance-Note-App-Frontend',
     // origin: process.env.FRONTEND_URL,
     credentials:true,
