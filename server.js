@@ -10,10 +10,7 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 app.use(cookieParser())
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://yasir-khan-legent.github.io"
-];
+const allowedOrigins = process.env.FRONTEND_URL.split(",");
 app.use(cors({
  origin: function(origin, callback){
     // allow requests with no origin (like mobile apps or curl)
